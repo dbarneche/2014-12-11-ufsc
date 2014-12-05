@@ -61,18 +61,18 @@ Getting more serious about testing has totally changed my approach towards softw
 
 We'll use the `testthat` package to make testing easy and intuitive.  This is a brilliant package that scales up from one-off tests to detailed suites that are well suited to large packages.
 
-```r
+~~~r
 library(testthat)
-```
+~~~
 
 In the previous section we created a function that linearly rescales values.
 
-```r
+~~~r
 rescale <- function(x, r.out) {
   p <- (x - min(x)) / (max(x) - min(x))
   r.out[[1]] + p * (r.out[[2]] - r.out[[1]])
 }
-```
+~~~
 
 This is a simple function, and one that we could use elsewhere.  But especially if we do use it elsewhere we want to know how it behaves.  So we write tests partly to document how it will react in particular edge cases.
 
@@ -94,18 +94,18 @@ Corner cases:
 
 We already ran through some of these when developing the function the first time.
 
-```r
+~~~r
 x <- rnorm(20)
-```
+~~~
 
-```r
+~~~r
 r.out <- c(0.1, 1.4)
 range(rescale(x, r.out)) == r.out
-```
+~~~
 
-```r
+~~~r
 expect_that(range(rescale(x, r.out)), equals(r.out))
-```
+~~~
 
 Note that this does not produce output!  It will only produce output if the test fails, in which case it will appear as an error.  Alternatively, when running non-interactively, we'll see indications that individual tests have passed.
 
@@ -115,7 +115,7 @@ That is the idea.  There are some issues around where to store the tests, but th
 
 Recall the `skewness()` function you wrote yesterday:
 
-```r
+~~~r
 variance <- function(x) {
   n <- length(x)  # number of observations
   xbar <- mean(x) # mean of x
@@ -129,20 +129,20 @@ skewness <- function(x) {
   skew <- skew / var(x)^(3/2)
   skew
 }
-```
+~~~
 
 What things could you do to test that `skewness()` returns correct 
 values or behaves appropriately?
 
 We could check that for data with know sign of skewness the function works:
 
-```r
+~~~r
 set.seed(42)
 x <- rlnorm(100)
 hist(x)
 expect_more_than(skewness(x), 0) ## ok
 expect_less_than(skewness(x), 0) ## throws error
-```
+~~~
 
 ### Expectations
 
@@ -150,13 +150,13 @@ expect_less_than(skewness(x), 0) ## throws error
 * **`equals()` Equality with a numerical tolerence**
 * Don't use `==` for comparisons involving floating point operations!
 
-    ```r
+    ~~~r
     sqrt(2)^2 == 2
-    ```
+    ~~~
 * In base R use `all.equal(sqrt(2)^2, 2)`
 * In **testthat** use `expect_that(foo, equals(bar))` or `expect_equal(foo, bar)`
 
-````
+~~~`
 expect_that(10, equals(10)) # passes
 
 expect_that(10, equals(10 + 1e-7)) # passes
@@ -166,72 +166,72 @@ expect_that(10, equals(10 + 1e-6)) # fails
 expect_that(10, equals(11)) # fails
 
 expect_equal(variance(1:10), var(1:10)) # passes
-```
+~~~
 
 * **`is_identical_to`:  Exact quality with identical** (this can be surprising with decimal numbers)
 
-```
+~~~
 expect_that(10, is_identical_to(10))
 expect_that(10, is_identical_to(10 + 1e-10))
-```
+~~~
 
 * **`is_a()` checks that an object inherit()s from a specified class**
 
-```
+~~~
 model <- lm(mpg ~ cyl, mtcars)
 expect_that(model, is_a("lm"))
-```
+~~~
 
 
 * **`matches()` matches a character vector against a "regular expression".**
 
-```
+~~~
 string <- "Testing is fun!"
 # Passes
 expect_that(string, matches("Testing"))
-```
+~~~
 
 * **`prints_text()` matches the printed output from an expression against a regular expression**
 
-```
+~~~
 a <- list(1:10, letters)
 # Passes
 expect_that(str(a), prints_text("List of 2"))
 # Passes
 expect_that(str(iris), prints_text("data.frame"))
-```
+~~~
 
 * **`shows_message()` checks that an expression shows a message**
 
-```
+~~~
 expect_that(library(mgcv),
 shows_message("This is mgcv"))
-```
+~~~
 
 * **`gives_warning()` expects that you get a warning**
 
-```
+~~~
 expect_that(log(-1), gives_warning())
 expect_that(log(-1),
   gives_warning("NaNs produced"))
 # Fails
 expect_that(log(0), gives_warning())
-```
+~~~
 
 * **`throws_error()` verifies that the expression throws an error. You can also supply a regular expression which is applied to the text of the error**.  This one is *very* useful.
 
-```
+~~~
 expect_that(1 / 2, throws_error())
 expect_that(seq_along(1:NULL), throws_error())
-```
+~~~
 
 
 * **`is_true()` is a useful catchall if none of the other expectations do what you want -it checks that an expression is true**
 
-```
+~~~
 x <- require(plyr)
 expect_that(x, is_true())
-```
+~~~
 
 # Where to store things
 
@@ -240,10 +240,10 @@ expect_that(x, is_true())
 * At the top of the testing file, source your functions file and load `testthat`
 * From within R, you can now do
 
-```
+~~~
 library(testthat)
 test_dir(".")
-```
+~~~
 
 Storing things in different directories ends up being the long-term bet, but you can run into pathname issues here.
 
@@ -251,12 +251,12 @@ Storing things in different directories ends up being the long-term bet, but you
 
 Start with the `rescale` function from before:
 
-```r
+~~~r
 rescale <- function(x, r.out) {
   p <- (x - min(x)) / (max(x) - min(x))
   r.out[[1]] + p * (r.out[[2]] - r.out[[1]])
 }
-```
+~~~
 
 Write tests to check that
 

@@ -7,42 +7,42 @@ tutor: Gavin
 
 ## Basic git configuration
 
-```r
+~~~r
 git config --global user.name "Apprentice carpenter"
 git config --global user.email "gitrocks@gmail.com"
 git config --global color.ui "auto"
-```
+~~~
 
 
 Please replace my name/email with yours before pasting it into a terminal. If it returns no errors, then verify that these settings were saved into your configuration file (`.gitconfig`) by running:
 
-```r
+~~~r
 git config --list
 git config user.name
-```
+~~~
 
 ## Line endings
 
 Different operating systems have different ideas about line endings.  To avoid headaches, on Windows run this:
 
-```
+~~~
 git config --global core.autocrlf "true"
-```
+~~~
 
 and on mac / linux type this:
 
-```
+~~~
 git config --global core.autocrlf "input"
-```
+~~~
 
 ## Configure your text editor
 
 The simple editor `nano` is likely to be the simplest thing to use (at least on a Mac).
 
 
-```r
+~~~r
 git config --global core.editor "nano --tempfile" 
-```
+~~~
 
 The default is `vi`.  If anyone ends up with a screen does not seem to respond to anything they type, you may have activated vi.  Put your hand up and we'll help you out.
 
