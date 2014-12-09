@@ -1,7 +1,7 @@
 ---
 layout: lesson
 root: ../..
-Title: How to organize your project directories
+title: How to organize your project directories
 tutor: Diego
 ---
 
@@ -11,8 +11,6 @@ The scientific process is naturally incremental, and many projects
 start life as random notes, some code, then a manuscript, and
 eventually everything is a bit mixed together.
 
-<!-- more -->
-
 <blockquote class="twitter-tweet"><p>Managing your projects in a reproducible fashion doesn't just make your science reproducible, it makes your life easier.</p>&mdash; Vince Buffalo (@vsbuffalo) <a href="https://twitter.com/vsbuffalo/status/323638476153167872">April 15, 2013</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
@@ -20,9 +18,53 @@ eventually everything is a bit mixed together.
 
 ## The general disaster
 
-Most people tend to organize their projects like this:
+Most people tend to organize their projects like this
+[screenshot](bad_layout.png):
 
-![](bad_layout.png)
+~~~
+alpha_gamma_null.R
+alpha_gamma_null.RData
+alpha_gamma.r
+alpha_gamma.RData
+CENSUS_SITES_AOTEP_BETA.xlsx
+CENSUS_SITES_AOTEP.xlsx
+CENSUS_SITES_IWP_BETA.xlsx
+CENSUS_SITES_IWP_CAVEATS.xlsx
+CENSUS_SITES_IWP.xlsx
+coral-cover.pptx
+doc/
++-- analyses/
++-- figures/
++-- PRELIMINARY_ANALYSES_2.pptx
++-- tables/
++-- text/
++-- URGENT_PDFs_TO_READ/
+family/
+fish_test.csv
+funct/
++-- beta_funct/
++-- census_hist_funct/
++-- local_reginal_funct/
++-- rarefactorion_funct/
+funct_alpha_gamma
++-- graphs_5_census_funct_1_2012_01_27.pdf
++-- graphs_5_census_funct_2_2012_01_27.pdf
++-- graphs_5_census_funct_3_2012_01_31.pdf
++-- graphs_10_census_funct_1_2012_01_27.pdf
++-- graphs_10_census_funct_2_2012_01_27.pdf
++-- graphs_10_census_funct_3_2012_01_31.pdf
+graficos.r
+graficos.RData
+graphs_5_census_funct_1_2011_12_08.pdf
+graphs_5_census_funct_2_2011_12_12.pdf
+graphs_5_census_funct_3_2012_01_10.pdf
+graphs_10_census_funct_1_2011_12_08.pdf
+graphs_10_census_funct_2_2011_12_12.pdf
+graphs_10_census_funct_3_2011_01_10.pdf
+last_version/
++-- figures/
++-- updated_manuscript/
+~~~
 
 There are many reasons why we should *ALWAYS* avoid this:
 
