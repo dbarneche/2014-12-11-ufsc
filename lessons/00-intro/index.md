@@ -9,11 +9,11 @@ tutor: Diego
 
 [About Software carpentry](http://www.software-carpentry.org/)
 
-- **Mission**: [Software Carpentry] helps researchers be more productive by teaching them basic computing skills. We run boot camps at dozens of sites around the world, and also provide open access material online for self-paced instruction. The benefits are more reliable results and higher productivity: a day a week is common, and a ten-fold improvement isn't rare.
-- **Who we are:** Software Carpentry is a volunteer organization previously supported by the Alfred P. Sloan Foundation and the Mozilla Foundation, currently part of the [Mozilla Science Lab](http://mozillascience.org/).
-- **Boot camps:** Our boot camps cover the core skills every scientist needs to get more done in less time: program construction, version control, testing, the command line, and data management. Short lessons alternate with hands-on practical sessions for two full days
+- **Mission**: [Software Carpentry] helps researchers be more productive by teaching them basic computing skills. We run workshops at dozens of sites around the world, and also provide open access material online for self-paced instruction. The benefits are more reliable results and higher productivity: a day a week is common, and a ten-fold improvement isn't rare.
+- **Who we are:** Software Carpentry is a volunteer organization previously supported by the Alfred P. Sloan Foundation and the Mozilla Foundation, currently under the umbrela of [NumFOCUS Foundation](http://numfocus.org/).
+- **Workshops:** Our workshops cover the core skills every scientist needs to get more done in less time: program construction, version control, testing, the command line, and data management. Short lessons alternate with hands-on practical sessions for two full days
 
-This boot camp was organised by Myriam Lacharite, Mauricio Cantor and Francisco Avendano and sponsored by the Marine Environmental Observation Prediction and Response Network (MEOPAR), the Faculty of Science, the Department of Oceanography, the Department of Biology, Dalhousie Oceanography Student Association and Biology Organization of Graduate Students, thanks everyone!
+This workshop was organised by Diego Barneche and Raniere Silva.
 
 ## The problem
 
@@ -44,7 +44,7 @@ Going to use R language
 - We are volunteers
 	- not being paid
 	- we are also learning
-- This boot camp is not
+- This workshop is not
 	- an R workshop
 	- software engineering
 	- going to turn people into crack programmers and solve all their problems
@@ -54,7 +54,7 @@ Going to use R language
 - There's no silver bullet
 	- If you are hoping that after two days you'll write perfect code, you won't. We **will** show you the key ingredients
 	- after that it's up to you to practice
-- The boot camp is inclusive
+- The workshop is inclusive
 	- it's a diverse crowd: not everything will appeal to everyone.  Some material will seem old or new, useful or useless, but bear with us.
 	- there is no dumb question
 	- anti-social behaviour not welcome
@@ -66,7 +66,7 @@ Going to use R language
 - Work in pairs
 	- why?
 	- help each other: Peer to peer is most efficient way of learning.
-- Etherpad to share notes: [https://etherpad.mozilla.org/SWC-Syd](https://etherpad.mozilla.org/SWC-Syd) (check with sticky notes)
+- Etherpad to share notes: https://etherpad.mozilla.org/SWC-UFSC (check with sticky notes)
 
 Use Rstudio
 
