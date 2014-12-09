@@ -404,6 +404,7 @@ Yes: Your program becomes defined around the "what" and not the "how".  It might
 ## What makes for a good function?
 
 **It's short**
+
 <blockquote class="twitter-tweet"><p>If you've written a function whose body is 2,996 lines of code, you're doing it wrong.</p>&mdash; M Butcher (@technosophos) <a href="https://twitter.com/technosophos/status/322392537983746049">April 11, 2013</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
