@@ -101,8 +101,26 @@ which will only perform the split and apply steps, and not any combine step.
 They're named by their input data type and represent null output by a `_` (see
 table)
 
-![Full apply suite](full_apply_suite.png)
-
+<table>
+<tr>
+<th></th><th>array</th><th>data frame</th><th>list</th><th>nothing</th>
+</tr>
+<tr>
+<th>array</th><td>aaplay</td><td>adply</td><td>alply</td><td>a_ply</td>
+</tr>
+<tr>
+<th>data frame</th><td>daply</td><td>ddply</td><td>dlply</td><td>d_ply</td>
+</tr>
+<tr>
+<th>list</th><td>laply</td><td>ldply</td><td>llply</td><td>l_ply</td>
+</tr>
+<tr>
+<th>n replicates</th><td>raply</td><td>rdply</td><td>rlply</td><td>r_ply</td>
+</tr>
+<tr>
+<th>functions arguments</th><td>maply</td><td>mdply</td><td>mlply</td><td>m_ply</td>
+</tr>
+</table>
 
 ### Understanding xxply
 
