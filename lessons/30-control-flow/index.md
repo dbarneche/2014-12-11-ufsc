@@ -17,14 +17,14 @@ Often when we're coding we want to control the flow of our actions. Control flow
 
 There are many ways these can be achieved in R. For conditional statements, the most commonly used approaches are the constructs: 
 
-```
+~~~
 if (and else)
 while
-```
+~~~
 
 Say, for example, that we want R to print a message depending on how a number x relates to 5:
 
-```
+~~~
 set.seed(10)
 x <- rpois(1, lambda=8)
 if (x >= 5) {
@@ -32,45 +32,45 @@ if (x >= 5) {
 } else {
     "x is smaller than 5"
 }
-```
+~~~
 
-```
+~~~
 ## [1] "x is greater or equal than 5"
-```
+~~~
 
 In the above case, the function `rpois` generates a random number following a Poisson distribution with a mean (i.e. lambda) of 8. The function `set.seed` guarantees that all machines that use the seed 10 as an input, will generate the exact same 'pseudo-random' number ([more about pseudo-random numbers](http://en.wikibooks.org/wiki/R_Programming/Random_Number_Generation)). Now, looking at at x we see that it takes the value 8 (you should get the exact same number).
 
-```
+~~~
 x
-```
+~~~
 
-```
+~~~
 ## [1] 8
-```
+~~~
 
 **Important:** when R evaluates the condition inside `if` statements, it is looking for a logical element, i.e., `TRUE` or `FALSE`. This can cause some headache for beginners. For example:
 
-```
+~~~
 x  <-  4 == 3
 if (x) {
     "4 equals 3"
 }
-```
+~~~
 
 As we can see, the message was not printed because the vector x is `FALSE` 
 
-```
+~~~
 x  <-  4 == 3
 x
-```
+~~~
 
-```
+~~~
 ## [1] FALSE
-```
+~~~
 
 Also, be careful if you a vector with more than one logical elements, the function `if` will still run, but will only evaluate the condition of first element 
 
-```
+~~~
 set.seed(1)
 x  <-  round(rnorm(30, mean=15, sd=15))
 y  <-  x %in% c(3, 5, 16)
@@ -78,29 +78,29 @@ y  <-  x %in% c(3, 5, 16)
 if(y) {
   stop('at least one number in x was found within the sequence c(3, 5, 16)')
 }
-```
+~~~
 
 You can see that R does not return any result but instead prints a warning message. 
 
-```
+~~~
 ## Warning message:
 ## In if (y) { :
 ##   the condition has length > 1 and only the first element will be used
-```
+~~~
 
 The reason for that is because the first element in `y`, `y[1]` is `FALSE` (i.e. `x[1]` is 6 and therefore is not contained within `c(3, 5, 16)`), so the action within the condition is not evaluated. Such cases where multiple comparisons/logical statements are contained within one single vector are not uncommon, and I suspect you are probably looking for the functions `any` or `all` before running an `if` statement. `any` will return TRUE if at least one TRUE value is found within a vector, otherwise will return `FALSE`. The function `all`, as the name suggests, will only return `TRUE` if all values in the vector are `TRUE`. We can build on the above example to make this clear - suppose that we want to make sure that we avoid the warning message, and, on top of that, print a more informative message:
 
-```
+~~~
 if(any(y)) {
   stop(paste0(paste0(x[y], collapse=' and '), ' found in x'))
 }
-```
+~~~
 
 Notice that now returns an Error message
 
-```
+~~~
 ## Error: 3 and 16 found in x
-```
+~~~
 
 The reason for that is because the function `stop` was evaluated. This function is widely used in what's known as *defensive programming* - if you anticipate a potential problem in your data manipulation/analysis within a function, the function can stop if this certain problem occurs and print an informative error message. The same idea works for the function `warning`. We could have also created the different statements with the function `all` instead of `any`. Try that by yourself. 
 
@@ -125,30 +125,30 @@ In fact, we'd encourage you to avoid `for` unless the order of iteration is impo
 
 When the order of iteration **is** important, we can use loops.  The basic structure of a `for` loop is 
 
-```r
+~~~
 for(iterator in set of values){
   do a thing
 }
-```
+~~~
 For example:
 
-```r
+~~~
 for(i in 1:10){
   print(i)
 }
-```
+~~~
 
 The `1:10` bit is basically just creating a vector on the fly; you can iterate over any other vector as well.
 
-```r
+~~~
 v <- c("this", "is", "the", "world's", "greatest", "for", "loop")
 for(i in v){
   print(i)
 }
-```
+~~~
 One of the most important issues with `for` loops is execution time.  Some operations can really slow down a for loop if they're done in every iteration.  For instance, take the following code:
 
-```r
+~~~
 vec  <-  numeric()
 system.time(
   for(i in seq_len(50000-1)) {
@@ -156,16 +156,16 @@ system.time(
     vec  <-  c(vec, calculation)
   }  
 )
-```
+~~~
 
-```
+~~~
    user  system elapsed 
    5.510   0.588   6.098 
-```
+~~~
 
 That takes about five and a half seconds to run.  It turns out that most of that time is taken up with the concatenation step.  If we get rid of that step by allocating a vector of the correct size to start with and accessing elements of that vector directly, it runs much faster.
 
-```r
+~~~
 iter  <-  50000
 vec  <-  numeric(length=iter)
 system.time(
@@ -174,15 +174,15 @@ system.time(
     vec[i]           <-  calculation
   }
 )
-```
-```
+~~~
+~~~
    user  system elapsed 
    0.091   0.002   0.092 
-```
+~~~
 
 That took about 1/6 as long to do the same thing!  We can shave off even more time by removing the `calculation` variable and allocating the results of each step directly to the vector with no intermediaries.
 
-```r
+~~~
 iter  <-  50000
 vec   <-  numeric(length=iter)
 system.time(
@@ -190,35 +190,35 @@ system.time(
         vec[i] <- sqrt(i + (i)/10)
     }
 )
-```
-```
+~~~
+~~~
    user  system elapsed 
    0.077   0.001   0.078 
-```
+~~~
 
 This version even compares favorably with the execution time we achieve using apply!
 
-```r
+~~~
 system.time(
     sapply(seq_len(iter), function(x)sqrt(x + (x)/10))
 )
-```
-```
+~~~
+~~~
    user  system elapsed 
    0.071   0.001   0.072 
-```
+~~~
 
 ## Nested for loops
 
 We can use a for loop within another for loop to iterate over two things at once (e.g., rows and columns of a matrix).
 
-```r
+~~~
 for(i in 1:5){
   for(j in 1:5){
     print(paste(i,j))
   }
 }
-```
+~~~
 
 Note the variable scoping - `i` is visible from within the `j` loop.  What happens when we try to print `j` from outside the `j` loop?
 
@@ -226,40 +226,40 @@ Note the variable scoping - `i` is visible from within the `j` loop.  What happe
 
 Sometimes you will find yourself needing to repeat an operation until a certain condition is met, rather than doing it for a specific number of times.  In some cases you might be able to hack something together using a `for` loop, but usually you'd be much better off using a `while` loop instead.  `While` loops look and act a lot like `for` loops, but instead of saying: 
 
-```r
+~~~
 for(iterator in set of values){
   do a thing
 }
-```
+~~~
 
 You instead say:
 
-```r
+~~~
 while(this condition is true){
   do a thing
 } 
-```
+~~~
 
 Let's try an example, shall we?  We'll try to come up with some simple code that generates random numbers between 0 and 1 until it gets one that's less than 0.1.  
 
-```r
+~~~
 while(z > 0.1){
   z <- runif(1)
   print(z)
 }
-```
+~~~
 
 But wait, that doesn't work!  What's the problem?
 
 The problem is that we haven't defined `z`, and so the very first time the while loop's condition is checked (`z > 0.1`), `while` just says "Okay, that's not true so I'm not going to execute this block of code".  The same thing would have happened if we defined `z` to be anything less than 0.1.  Let's fix it.
 
-```r
+~~~
 z <- 1
 while(z > 0.1){
   z <- runif(1)
   print(z)
 }
-```
+~~~
 
 ## 
 
@@ -286,7 +286,7 @@ One place where `for` loops shine is in writing simulations; if one iteration de
 In an (unbiased) random walk, each time step we move left or right with probability 0.5.  R has lots of random number generation functions.  The `runif` function generates random numbers uniformly on `[0,1]` so we can draw random steps directions like this:
 
 
-```r
+~~~
 set.seed(1)
 for (i in 1:10){
   step <- 0
@@ -298,9 +298,9 @@ for (i in 1:10){
   }
   print(step)
 }
-```
+~~~
 
-```
+~~~
 ## [1] 1
 ## [1] 1
 ## [1] -1
@@ -311,20 +311,20 @@ for (i in 1:10){
 ## [1] -1
 ## [1] -1
 ## [1] 1
-```
+~~~
 
 
 Or we could take the `sign` of a standard normal:
 
 
-```r
+~~~
 set.seed(1)
 for (i in 1:10){
   print(sign(rnorm(n=1, mean=0)))
 }
-```
+~~~
 
-```
+~~~
 ## [1] -1
 ## [1] 1
 ## [1] -1
@@ -335,34 +335,34 @@ for (i in 1:10){
 ## [1] 1
 ## [1] 1
 ## [1] -1
-```
+~~~
 
 
 The implementation does not matter.  Now let's wrap that in a function.
 
 
-```r
+~~~
 random.step <- function() {
   sign(rnorm(n=1, mean=0))
 }
-```
+~~~
 
 
 We can then use this to step 20 steps:
 
 
-```r
+~~~
 set.seed(1)
 x <- 0
 for (i in 1:20){
   x <- x + random.step()
 }
 x
-```
+~~~
 
-```
+~~~
 ## [1] 4
-```
+~~~
 
 
 which will end up somewhere between -20 and 20, but with a mean of 0.
@@ -370,7 +370,7 @@ which will end up somewhere between -20 and 20, but with a mean of 0.
 We want to track the entire trajectory:
 
 
-```r
+~~~
 set.seed(1)
 nsteps <- 200
 x <- numeric(nsteps + 1) # space to store things in
@@ -379,14 +379,14 @@ for (i in seq_len(nsteps)) {
   x[i+1] <- x[i] + random.step()
 }
 plot(x, type="l", xlab="Step number", ylab="Position")
-```
+~~~
 
 ![plot of chunk random_walk1](figure/random_walk1.png)
 
 
 We might want to run that lots of times, so put it into a function:
 
-```r
+~~~
 random.walk <- function(nsteps, x0=0) {
   x <- numeric(nsteps + 1)
   x[1] <- x0
@@ -395,22 +395,22 @@ random.walk <- function(nsteps, x0=0) {
     }
   x
 }
-```
+~~~
 
 
 which is now much easier to use:
 
 
-```r
+~~~
 set.seed(1)
 plot(random.walk(400), type="l", xlab="Step number", ylab="Position")
-```
+~~~
 
 ![plot of chunk random_walk2](figure/random_walk2.png)
 
 
 
-```r
+~~~
 set.seed(1)
 nsteps <- 200
 nrep <- 40
@@ -419,7 +419,7 @@ plot(NA, xlim=c(1, nsteps+1), ylim=c(-30, 30), xlab="Step number", ylab="Positio
 for (i in 1:nrep){
   lines(random.walk(200), col=cols[i])
 }
-```
+~~~
 
 ![plot of chunk random_walks](figure/random_walks.png)
 
