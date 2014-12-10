@@ -331,6 +331,7 @@ This is the first factor but by default the ordering is determined by alphabetic
 ~~~
 x <- factor(c("yes", "no", "yes"), levels = c("yes", "no"))
 ~~~
+
 ## Data frame
 
 A data frame is a very important data type in R. It's pretty much the de facto data structure for most tabular data and what we use for statistics.
