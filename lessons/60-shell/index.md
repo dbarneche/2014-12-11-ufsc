@@ -6,7 +6,7 @@ bootcamp_slug: gapminder
 Title: The Unix Shell
 tutor: Ross
 ---
-**Materials**: If you have not already done so, please [download the lesson materials for this bootcamp](https://github.com/dbarneche/2014-12-11-ufsc/raw/gh-pages/data/lessons.zip), unzip it, then go to the directory `shell`, and open (double click) on the file `shell.Rproj` to open Rstudio.
+**Materials**: If you have not already done so, please [download the lesson materials for this bootcamp](https://github.com/dbarneche/2014-12-11-ufsc/raw/gh-pages/data.zip), unzip it, then go to the directory `shell`, and open (double click) on the file `shell.Rproj` to open Rstudio.
 
 
 ## Initial setup (for Windows users only):

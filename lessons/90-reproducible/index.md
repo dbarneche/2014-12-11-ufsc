@@ -5,7 +5,7 @@ title: Reproducible research
 tutor: Diego
 ---
 
-**Materials**: If you have not already done so, please [download the lesson materials for this bootcamp](https://github.com/dbarneche/2014-12-11-ufsc/raw/gh-pages/data/lessons.zip), unzip, then go to the directory `reproducible`, and open (double click) on the file `reproducible.Rproj` to open Rstudio.
+**Materials**: If you have not already done so, please [download the lesson materials for this bootcamp](https://github.com/dbarneche/2014-12-11-ufsc/raw/gh-pages/data.zip), unzip, then go to the directory `reproducible`, and open (double click) on the file `reproducible.Rproj` to open Rstudio.
 
 ## Introduction
 

@@ -11,7 +11,7 @@ tutor: Diego
 	 semantics) and scoping rules.
 2. Start to writing their own functions
  -->
-**Materials**: Please [download the lesson materials for this bootcamp](https://github.com/dbarneche/2014-12-11-ufsc/raw/gh-pages/data/lessons.zip), unzip, go to the directory `functions`, and open (double click) on the file `functions.Rproj` to open Rstudio.
+**Materials**: Please [download the lesson materials for this bootcamp](https://github.com/dbarneche/2014-12-11-ufsc/raw/gh-pages/data.zip), unzip, go to the directory `functions`, and open (double click) on the file `functions.Rproj` to open Rstudio.
 
 
 Abstracting your code into many small functions is key for writing
