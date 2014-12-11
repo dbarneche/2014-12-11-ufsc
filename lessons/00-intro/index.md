@@ -23,7 +23,7 @@ Yet, most researchers have no or limited formal training in computer science, an
 
 ## The solution
 
-In this bootcamp you will learn how to
+In this workshop you will learn how to
 
 - structure projects
 - write functions
@@ -73,7 +73,7 @@ Use Rstudio
 - open up Rstudio
 - explain about console window, editor,
 - R projects and working directories
-- Download materials for bootcamp.
+- Download materials for workshop.
 
 ## Interesting links
 
