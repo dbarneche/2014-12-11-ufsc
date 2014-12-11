@@ -1,5 +1,4 @@
 ```{r,echo=FALSE,results="hide"}
-opts_chunk$set(tidy=FALSE)
 library(testthat)
 source('../R/functions-analyses.R')
 test_dir('../tests')
@@ -72,7 +71,7 @@ sum(data.1982$gdpPercap) / length(data.1982$gdpPercap)
 ```
 Notice that repeating things may be problematic; first because it increases your chances of typos; second, if for some reason you change the name of your columns in `dat`, you will have to manually change all these names, which will be quite annoying.  
 
-# Examples from lesson #5 - Testing functions - presented by Gavin Simpson  
+# Examples from lesson #5 - Testing functions - presented by Diego Barneche  
 We have seen how important it is to test your functions in R. We have used a very user-friendly packages called `testthat`, where most tests are expectations of a certain result/output:  
 
 ## Example of test  
@@ -105,7 +104,7 @@ test_that("Rescale gives expected range", {
 })
 ```
 
-# Examples from lessons #2 and #4 - Writing plot functions and looping - presented by Diego Barneche and Gavin Simpson  
+# Examples from lessons #2 and #4 - Writing plot functions and looping - presented by Diego Barneche and Raniere Silva  
 
 ## Making a plot  
 ```{r, echo=FALSE}
@@ -149,4 +148,4 @@ for (year in unique(data$year))
 
 ```
 
-[id]: https://raw.github.com/dbarneche/2014-07-14-Dalhousie/gh-pages/data/lessons/10-functions/gapminder-FiveYearData.csv
+[id]: https://raw.github.com/dbarneche/2014-12-11-ufsc/gh-pages/data/10-functions/gapminder-FiveYearData.csv
