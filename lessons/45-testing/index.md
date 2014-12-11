@@ -61,13 +61,13 @@ Getting more serious about testing has totally changed my approach towards softw
 
 We'll use the `testthat` package to make testing easy and intuitive.  This is a brilliant package that scales up from one-off tests to detailed suites that are well suited to large packages.
 
-~~~r
+~~~
 library(testthat)
 ~~~
 
 In the previous section we created a function that linearly rescales values.
 
-~~~r
+~~~
 rescale <- function(x, r.out) {
   p <- (x - min(x)) / (max(x) - min(x))
   r.out[[1]] + p * (r.out[[2]] - r.out[[1]])
@@ -94,16 +94,16 @@ Corner cases:
 
 We already ran through some of these when developing the function the first time.
 
-~~~r
+~~~
 x <- rnorm(20)
 ~~~
 
-~~~r
+~~~
 r.out <- c(0.1, 1.4)
 range(rescale(x, r.out)) == r.out
 ~~~
 
-~~~r
+~~~
 expect_that(range(rescale(x, r.out)), equals(r.out))
 ~~~
 
@@ -115,7 +115,7 @@ That is the idea.  There are some issues around where to store the tests, but th
 
 Recall the `skewness()` function you wrote yesterday:
 
-~~~r
+~~~
 variance <- function(x) {
   n <- length(x)  # number of observations
   xbar <- mean(x) # mean of x
@@ -136,7 +136,7 @@ values or behaves appropriately?
 
 We could check that for data with know sign of skewness the function works:
 
-~~~r
+~~~
 set.seed(42)
 x <- rlnorm(100)
 hist(x)
@@ -150,13 +150,14 @@ expect_less_than(skewness(x), 0) ## throws error
 * **`equals()` Equality with a numerical tolerence**
 * Don't use `==` for comparisons involving floating point operations!
 
-    ~~~r
-    sqrt(2)^2 == 2
-    ~~~
+~~~
+sqrt(2)^2 == 2
+~~~
+
 * In base R use `all.equal(sqrt(2)^2, 2)`
 * In **testthat** use `expect_that(foo, equals(bar))` or `expect_equal(foo, bar)`
 
-~~~`
+~~~
 expect_that(10, equals(10)) # passes
 
 expect_that(10, equals(10 + 1e-7)) # passes
@@ -251,7 +252,7 @@ Storing things in different directories ends up being the long-term bet, but you
 
 Start with the `rescale` function from before:
 
-~~~r
+~~~
 rescale <- function(x, r.out) {
   p <- (x - min(x)) / (max(x) - min(x))
   r.out[[1]] + p * (r.out[[2]] - r.out[[1]])
